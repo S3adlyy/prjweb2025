@@ -1,0 +1,249 @@
+body {
+    background-color: #f8f9fa !important;
+    font-family: 'Poppins', sans-serif;
+    color: black !important;
+}
+
+:root {
+    --primary-dark: #0a1d37;
+    --accent-blue: #4da6ff;
+    --dark-blue: #001f3f;
+}
+
+.sidenav {
+    background-color: var(--primary-dark) !important;
+}
+
+.navbar-main {
+    background-color: var(--dark-blue) !important;
+    border-bottom: 2px solid var(--accent-blue) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(195deg, var(--accent-blue), #3a8df1) !important;
+}
+
+.btn-primary {
+    background-color: var(--dark-blue) !important;
+}
+
+.badge.bg-success {
+    background-color: var(--accent-blue) !important;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-responsive {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    font-size: 0.9em;
+    padding: 0.5em 0.75em;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    color: #6c757d;
+}
+
+.search-box input {
+    padding-left: 40px;
+}
+
+.nav-item .nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+    background-color: rgba(9, 32, 87, 0.1);
+}
+
+.collapse ul {
+    background-color: rgba(22, 9, 73, 0.62);
+    border-radius: 0 0 8px 8px;
+}
+
+.alert {
+    animation: fadeIn 0.5s ease-in-out;
+    color: black !important;
+}
+
+.alert-success {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.alert-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: black !important;
+}
+
+.alert-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+}
+
+.card-header.bg-primary {
+    background-color: var(--dark-blue) !important;
+    color: white !important;
+}
+
+.card-header.bg-primary h5 {
+    color: white !important;
+}
+
+.form-check-label {
+    color: black !important;
+}
+
+.table th,
+.table td {
+    color: black !important;
+}
+
+.station-warning {
+    color: red;
+    font-size: 0.8em;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-modifier {
+    background-color: #28a745 !important;
+    border: none;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-modifier:hover {
+    background-color: #218838 !important;
+}
+
+.btn-supprimer {
+    background-color: #dc3545 !important;
+    border: none;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-supprimer:hover {
+    background-color: #c82333 !important;
+}
+
+.search-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f3faff;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    display: none;
+    transition: opacity 0.5s;
+}
+
+/* Sidebar styles */
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--primary-dark);
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: var(--accent-blue);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidenav .logo {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidenav .logo img {
+    max-width: 80%;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+    .sidenav {
+        width: 0;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+}

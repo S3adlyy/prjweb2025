@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0A192F, #203a43, #2c5364);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transform: translateX(10px);
+    }
+
+    .loader {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      animation: bounce 0.9s infinite ease-in-out alternate;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      to {
+        transform: translateY(-30px);
+        opacity: 1;
+      }
+    }
+
+    .loading-text {
+      color: #fff;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px #ffffff40;
+      animation: flicker 2s infinite alternate;
+      margin-top: 10px;
+    }
+
+    @keyframes flicker {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    .sub-text {
+      color: #ddd;
+      margin-top: 10px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      animation: fadeIn 2.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      0%, 100% { opacity: 0.3; }
+      50%      { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loader">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loading-text">Loading...</div>
+    <div class="sub-text">Please wait while we prepare your experience</div>
+  </div>
+
+  <script>
+    // Redirection après un délai (optionnel)
+    setTimeout(function() {
+      // Vous pouvez remplacer cette URL par la destination souhaitée
+      // ou la passer en paramètre d'URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get('redirect') || 'index.html';
+      window.location.href = redirectUrl;
+    }, 2000); // 2 secondes de chargement
+  </script>
+</body>
+</html>

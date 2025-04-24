@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasyParki 3D</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      
+    }
+    body
+    {
+        background: linear-gradient(135deg, #0A192F, #203a43, #2c5364);
+    }
+    .title {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 100px;
+      background: linear-gradient(90deg, #ffffff, #c0c0c0, #ffffff);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite, scaleText 3s ease-in-out infinite;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+
+    @keyframes scaleText {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Logo */
+    .logo-container {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      animation: floatSubtle 6s ease-in-out infinite;
+      z-index: 20;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img {
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 0.4s ease;
+      border-radius: 50%;
+    }
+
+    @keyframes floatSubtle {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    .logo-container:hover img {
+      transform: scale(1.12);
+    }
+
+    .spline-viewer {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Style du bouton de connexion - Couleur unie */
+    .btn-container {
+        color:aliceblue;
+      position: absolute;
+      top: 180px; /* Ajusté un peu plus bas */
+      left: 180px; /* Déplacé un peu plus à droite */
+    }
+
+
+
+
+
+    .btn {
+      width: 180px;
+      height: 60px;
+      cursor: pointer;
+      background: #2E3A59; /* gris bleuté chic */
+      border: 1px solid #2E3A59;
+      outline: none;
+      transition: 0.5s ease-in-out;
+    }
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      fill: none;
+      stroke: #fff;
+      stroke-dasharray: 150 480;
+      stroke-dashoffset: 150;
+      transition: 1s ease-in-out;
+    }
+
+
+    .btn:hover {
+    background: #3A4A6C; /* un poil plus clair en hover */
+    box-shadow: 0 0 10px #00BFFF66, 0 0 20px #00BFFF33; /* lueur bleue douce */
+    }
+
+    .btn:hover svg {
+      stroke-dashoffset: -480;
+    }
+
+    .btn span {
+      color: white;
+      font-size: 18px;
+      font-weight: 100;
+    }
+ 
+  </style>
+</head>
+<body>
+
+  <div class="title">EasyParki</div>
+
+  <div class="logo-container">
+    <img src="./images/logo2.png" alt="Logo EasyParki">
+  </div>
+
+  <div class="spline-viewer">
+    <spline-viewer url="https://prod.spline.design/mfbjeRnlynzPyEms/scene.splinecode"></spline-viewer>
+  </div>
+
+  <!-- Bouton de connexion aligné à gauche sous "EasyParki" -->
+  <div class="btn-container">
+    <a href="login2.php">
+      <button class="btn">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>Se Connecter</span>
+      </button>
+    </a>
+  </div>
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js">
+
+
+    
+  </script>
+<script>
+  window.onload = function() {
+      const shadowRoot = document.querySelector('spline-viewer').shadowRoot;
+      if (shadowRoot) {
+          const logo = shadowRoot.querySelector('#logo');
+          if (logo) logo.remove();
+      }
+  }
+</script>
+<script>
+      // Script de chargement modifié
+      document.querySelector('.btn-container a').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Créer l'écran de chargement
+        const loadingScreen = document.createElement('div');
+        loadingScreen.id = 'loading-screen';
+        loadingScreen.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #0A192F, #203a43, #2c5364);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          z-index: 9999;
+          font-family: 'Poppins', sans-serif;
+        `;
+        
+        loadingScreen.innerHTML = `
+          <div class="loader" style="display:flex;gap:20px;margin-bottom:20px;">
+            <div class="dot" style="width:22px;height:22px;background:#fff;border-radius:50%;animation:bounce 0.9s infinite ease-in-out alternate;"></div>
+            <div class="dot" style="width:22px;height:22px;background:#fff;border-radius:50%;animation:bounce 0.9s infinite ease-in-out alternate;animation-delay:0.15s;"></div>
+            <div class="dot" style="width:22px;height:22px;background:#fff;border-radius:50%;animation:bounce 0.9s infinite ease-in-out alternate;animation-delay:0.3s;"></div>
+          </div>
+          <div class="loading-text" style="color:#fff;font-size:2.2rem;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 6px #ffffff40;animation:flicker 2s infinite alternate;margin-top:10px;">Loading...</div>
+          <div class="sub-text" style="color:#ddd;margin-top:10px;font-size:1rem;letter-spacing:1px;animation:fadeIn 2.5s infinite;">Redirecting to login page</div>
+        `;
+        
+        document.body.appendChild(loadingScreen);
+        
+        // Redirection après un court délai
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 1500);
+      });
+  
+  
+
+</script>
+
+
+</body>
+</html>
